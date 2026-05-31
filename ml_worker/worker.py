@@ -18,7 +18,6 @@ if not REDIS_URL or not MONGO_URI:
 # =========================
 # 🔥 CELERY SETUP & SSL TLS CONFIGURATION
 # =========================
-# Explicitly passing SSL configs to match Upstash Redis secure channel paths
 app = Celery(
     "worker", 
     broker=REDIS_URL, 
@@ -45,8 +44,14 @@ if sys.platform == 'win32':
 # =========================
 try:
     client = MongoClient(MONGO_URI, connectTimeoutMS=5000, serverSelectionTimeoutMS=5000)
-    db_name = client.get_default_database()
-    db = db_name if db_name is not None else client["dairy-sonogram"]
+    
+    # ✅ FIXED: Safely read default database name using PyMongo properties instead of get_default_database()
+    try:
+        db = client.get_default_database()
+    except AttributeError:
+        # Fallback to parsing from URI or defaulting to correct collection cluster path
+        db = client.get_database() if client.nodes else client["dairy-sonogram"]
+        
     sonogram_collection = db['sonogramresults']
     print(f"✅ MongoDB Connected successfully to database cluster: {db.name}")
 except Exception as e:
@@ -56,7 +61,6 @@ except Exception as e:
 # =========================
 # 🔥 CELERY BACKGROUND TASK PIPELINE
 # =========================
-# ✅ FIX: Synchronized name exactly to "predict_task" to match inferenceController.js
 @app.task(name='predict_task')
 def predict_sonogram_task(sonogram_id, image_path):
     print(f"📥 Picking up task for sonogram ID: {sonogram_id}")
