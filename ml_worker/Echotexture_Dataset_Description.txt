@@ -1,0 +1,24 @@
+Echotexture Features Dataset Description
+This dataset contains echotexture features extracted from ultrasound images of dairy cows' mammary glands. The features are numerical representations of texture characteristics derived from B-mode ultrasound images and are used for predicting milk yield and production stage using machine learning models.
+Dataset Structure
+The dataset is stored in CSV format (echotexture_features.csv) and consists of:
+• Feature Columns: Numerical echotexture attributes extracted from ultrasound images.
+• Target Column: Label representing milk yield category or production stage.
+• Each row represents one ultrasound image sample.
+• Each column represents a specific statistical texture feature.
+Typical Echotexture Features
+Common echotexture features may include:
+• Mean Intensity – Average grayscale intensity of the ultrasound image region.
+• Standard Deviation – Variation of pixel intensity values.
+• Variance – Measure of dispersion in pixel intensity.
+• Entropy – Randomness or complexity of texture patterns.
+• Contrast – Local intensity variation within the image.
+• Homogeneity – Uniformity of pixel distribution.
+• Energy – Sum of squared pixel values (texture uniformity).
+• Correlation – Statistical relationship between neighboring pixels.
+Target Variable
+The target variable represents the classification label assigned to each sample. It may include:
+• Milk Yield Category (e.g., High vs No Lactation).
+• Production Stage (e.g., Dry, Peak, Late Lactation).
+Intended Use of Dataset
+This dataset is used to train supervised machine learning or deep learning models. The general workflow includes data preprocessing, feature scaling, model training using Artificial Neural Networks (ANN) or other classifiers, and performance evaluation using metrics such as Accuracy, Precision, Recall, and F1-score.

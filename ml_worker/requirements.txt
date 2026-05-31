@@ -1,0 +1,7 @@
+celery
+redis
+torch
+torchvision
+Pillow
+pymongo
+python-dotenv

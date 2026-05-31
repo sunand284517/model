@@ -1,0 +1,46 @@
+Field Names and Description
+Project Dataset: Cow Udder Image Features & DMY
+Dataset Description
+This dataset contains extracted image features from cow udder images along with DMY (Daily Milk Yield). Each record represents one cow sample with calculated statistical, texture, gradient, and run-length features.
+1. Cow (Sample ID)
+Unique identifier assigned to each cow sample image (e.g., 2121_1, 2137_2).
+2. DMY (Daily Milk Yield)
+Represents the milk production value of the cow (in liters per day).
+First Order Statistical Features
+3. Mean Value (NPV)
+Average brightness intensity of the selected image region.
+4. Standard Deviation (PSD)
+Measures how much the pixel intensity varies from the mean value.
+5. Skewness
+Indicates asymmetry of brightness distribution (left or right spread).
+6. Excess (Kurtosis)
+Shows whether brightness distribution is sharply peaked or flat compared to normal distribution.
+7. 0.05 Quantile
+Brightness value below which 5% of pixels fall (low intensity indicator).
+8. 0.95 Quantile
+Brightness value below which 95% of pixels fall (high intensity indicator).
+Gradient-Based Features
+9. Gradient Mean
+Average edge strength in the image.
+10. Percentage of Non-Zero Gradients
+Percentage of pixels that contain edges, indicating image sharpness and detail.
+Second Order Texture Features (GLCM)
+11. Contrast
+Measures difference between light and dark regions in the image.
+12. Correlation
+Indicates how closely neighboring pixels are related.
+13. Entropy
+Measures randomness or complexity of image texture.
+14. Homogeneity
+Measures smoothness or uniformity of texture.
+Higher Order Features (Run-Length Based)
+15. Run Percentage
+Shows frequency of similar brightness values appearing consecutively.
+16. Long-Run Emphasis
+Highlights longer continuous regions of similar brightness.
+17. Gray Value Distribution
+Describes how gray intensity values are distributed across the image.
+18. Run-Length Distribution
+Describes length of consecutive pixels with same brightness level.
+Conclusion
+This dataset is used to analyze the relationship between udder image features and milk production (DMY). The extracted features help in building predictive models for milk yield estimation.
